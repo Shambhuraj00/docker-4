@@ -1,31 +1,20 @@
-name: Docker CI 
+name: Docker CI
 
-on: 
+on:
+  push:
+    branches: [ "main" ]
 
-  push: 
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    branches: [ "main" ] 
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
 
-  pull_request: 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
-    branches: [ "main" ] 
+      - name: Build Docker Image
+        run: docker build -t docker-ci-demo:latest .
 
-jobs: 
-
-  build: 
-
-    runs-on: ubuntu-latest 
-
-    steps: 
-
-    - name: Checkout source code 
-
-      uses: actions/checkout@v4 
-
- 
-
-    - name: Set up Docker Buildx 
-
-      uses: docker/setup-buildx-action@v3 
-
-    - name: Build Docker Image 

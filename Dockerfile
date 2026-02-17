@@ -1,3 +1,5 @@
-FROM nginx:latest
-COPY app /usr/share/nginx/html
-EXPOSE 80
+FROM nginx:latest 
+
+COPY app /usr/share/nginx/html 
+
+EXPOSE 80 
